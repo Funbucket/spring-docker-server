@@ -8,23 +8,6 @@ pipeline {
     }
 
     stages {
-        stage('Prepare') {
-          steps {
-            echo 'Clonning Repository'
-            git url: 'https://github.com/Funbucket/spring-docker-server',
-              branch: 'master',
-              credentialsId: 'github'
-            }
-            post {
-             success { 
-               echo 'Successfully Cloned Repository'
-             }
-           	 failure {
-               error 'This pipeline stops here...'
-             }
-          }
-        }
-
         stage('Bulid Gradle') {
           steps {
             echo 'Bulid Gradle'
